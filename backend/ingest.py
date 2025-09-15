@@ -36,9 +36,18 @@ class DocumentIngester:
             text = ""
             with open(file_path, 'rb') as file:
                 pdf_reader = PyPDF2.PdfReader(file)
-                for page in pdf_reader.pages:
-                    text += page.extract_text() + "\n"
-            return text.strip()
+                logger.info(f"PDF has {len(pdf_reader.pages)} pages")
+                
+                for i, page in enumerate(pdf_reader.pages):
+                    page_text = page.extract_text()
+                    if page_text.strip():
+                        text += page_text + "\n"
+                        logger.info(f"Extracted {len(page_text)} characters from page {i+1}")
+                    else:
+                        logger.warning(f"No text found on page {i+1}")
+                
+                logger.info(f"Total extracted text length: {len(text)}")
+                return text.strip()
         except Exception as e:
             logger.error(f"Error extracting text from PDF {file_path}: {e}")
             return ""
@@ -190,8 +199,9 @@ class DocumentIngester:
 
                 # Extract text
                 text = self.extract_text(file_path)
+                logger.info(f"Extracted {len(text)} characters from {file_path.name}")
                 if not text:
-                    logger.warning(f"No text extracted from {file_path.name}")
+                    logger.warning(f"No text extracted from {file_path.name} - skipping")
                     continue
 
                 # Clean text
@@ -199,6 +209,7 @@ class DocumentIngester:
 
                 # Chunk text
                 chunks = self.chunk_text(text)
+                logger.info(f"Created {len(chunks)} chunks from {file_path.name}")
 
                 # Create metadata for each chunk
                 for i, chunk in enumerate(chunks):

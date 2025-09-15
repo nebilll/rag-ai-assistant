@@ -10,7 +10,7 @@ import uvicorn
 from rag import RAGProcessor
 from ingest import DocumentIngester
 
-app = FastAPI(title="RAG AI Assistant API", version="1.0.0")
+app = FastAPI(title="Contexter API", version="1.0.0")
 
 # Configure CORS
 app.add_middleware(
@@ -35,7 +35,7 @@ INDEX_DIR.mkdir(parents=True, exist_ok=True)
 
 @app.get("/")
 async def root():
-    return {"message": "RAG AI Assistant API is running"}
+    return {"message": "Contexter API is running"}
 
 @app.get("/health")
 async def health_check():

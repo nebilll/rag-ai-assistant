@@ -9,7 +9,7 @@ const ChatInterface: React.FC = () => {
     const [messages, setMessages] = useState<ChatMessage[]>([
         {
             id: '1',
-            content: "Hello! I'm AI Mentor Habib, your RAG-powered assistant. Upload some documents and ask me questions about them!",
+            content: "Hello! I'm Contexter, your AI document assistant. Upload some documents and ask me questions about them!",
             isUser: false,
             timestamp: new Date()
         }
@@ -79,7 +79,7 @@ const ChatInterface: React.FC = () => {
     return (
         <div className="chat-interface">
             <div className="chat-header">
-                <h2>Chat with AI Mentor Habib</h2>
+                <h2>Chat with Contexter</h2>
                 <p>Ask questions about your uploaded documents</p>
             </div>
 
@@ -132,7 +132,7 @@ const ChatInterface: React.FC = () => {
                             <div className="message-text">
                                 <div className="typing-indicator">
                                     <Loader2 size={16} className="animate-spin" />
-                                    <span>AI Mentor Habib is thinking...</span>
+                                    <span>Contexter is thinking...</span>
                                 </div>
                             </div>
                         </div>

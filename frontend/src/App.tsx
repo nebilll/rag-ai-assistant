@@ -75,9 +75,9 @@ function App() {
             <header className="app-header">
                 <div className="header-content">
                     <div className="logo">
-                        <Brain className="logo-icon" />
-                        <h1>AI Mentor Habib</h1>
-                        <span className="subtitle">RAG AI Assistant</span>
+                        <img src="/logo.svg" alt="Contexter" className="logo-icon" />
+                        <h1>Contexter</h1>
+                        <span className="subtitle">AI Document Assistant</span>
                     </div>
                     <nav className="nav-tabs">
                         {tabs.map(({ id, label, icon: Icon }) => (
@@ -121,7 +121,7 @@ function App() {
             </main>
 
             <footer className="app-footer">
-                <p>Powered by FastAPI, React, and OpenAI</p>
+                <p>Powered by Contexter AI</p>
             </footer>
         </div>
     );
